@@ -4,8 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+         * {
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        label {
+          border: solid 2px pink;
+          height: 20px;
+          width: 20px;
+          display: inline-block;
+          margin: 4px;
+          vertical-align: middle;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 4px;
+        }
+
+        label>div {
+          width: 14px;
+          height: 14px;
+          background-color: white;
+          border-radius: 4px;
+        }
+
+        .c1:checked+label>div {
+          background-color: pink;
+        }
+
+        .c1 {
+          display: none;
+        }
+
+        .no_tasks {
+            color: #e0dcdd;
+            font-style: italic;
+        }
+
+        button {
+            padding: 5px;
+            border-radius: 0;
+            border: none;
+            background-color: #f5cbd7;
+        }
+
+        button:disabled {
+            background-color: #faf2f4;
+        }
+    </style>
+
     <title>Document</title>
 </head>
+
 <body>
     <h2>Добавить задачу</h2>
 
@@ -26,6 +79,10 @@
 
         const button2 = document.querySelector('.clear_tasks');
 
+        const output = document.querySelector('.output');
+        output.innerHTML = '<p class="no_tasks">Нет задач</p>';
+        button2.setAttribute('disabled', ''); 
+
         let tasks = [];
                     
         button1.addEventListener('click', () => {
@@ -38,11 +95,8 @@
             
 
             for (let i=0; i < tasks.length; i++){
-                output.innerHTML +='<div><input type="checkbox">' + tasks[i]+ '</input></div>';
+                output.innerHTML +='<div><input type="checkbox" name="ch" class="c1" id="elem' + i + '"><label for="elem' + i + '"><div></div></label>' + tasks[i]+ '</input></div>';
             }
-            console.log(tasks);
-
-            
 
             document.getElementById('task').value = '';
              
@@ -54,16 +108,13 @@
             const task = document.getElementById('task').value;
             const output = document.querySelector('.output');
             if(document.querySelector('.output').value !== '') {
-            output.innerHTML = '<p>НЕТ ЗАДАЧ</p>';
+            output.innerHTML = '<p class="no_tasks">Нет задач</p>';
             }
             tasks = [];
             button2.setAttribute('disabled', ''); 
         });
 
 
-
-       
-    
 
     </script>
 </body>
