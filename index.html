@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Добавить задачу</h2>
+
+    <!-- ADD TASK -->
+    <input type="text" id="task">
+    <button class="add_task">Добавить</button>
+
+    <h2>Список задач</h2>
+
+    <!-- OUTPUT -->
+    <div class="output"></div>
+
+    <button class="clear_tasks">Очистить список задач</button>
+
+    <script>
+
+        const button1 = document.querySelector('.add_task');
+
+        const button2 = document.querySelector('.clear_tasks');
+
+        let tasks = [];
+                    
+        button1.addEventListener('click', () => {
+            button2.disabled = false;
+            const task = document.getElementById('task').value;
+            const output = document.querySelector('.output');
+
+            output.innerHTML = '';
+            tasks.push(task);
+            
+
+            for (let i=0; i < tasks.length; i++){
+                output.innerHTML +='<div><input type="checkbox">' + tasks[i]+ '</input></div>';
+            }
+            console.log(tasks);
+
+            
+
+            document.getElementById('task').value = '';
+             
+        });
+
+    
+
+        button2.addEventListener('click', () => {
+            const task = document.getElementById('task').value;
+            const output = document.querySelector('.output');
+            if(document.querySelector('.output').value !== '') {
+            output.innerHTML = '<p>НЕТ ЗАДАЧ</p>';
+            }
+            tasks = [];
+            button2.setAttribute('disabled', ''); 
+        });
+
+
+
+       
+    
+
+    </script>
+</body>
+</html>
