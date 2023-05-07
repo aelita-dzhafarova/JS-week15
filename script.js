@@ -14,7 +14,7 @@ function numbers(n){
     } while(reduced >= 10);
 
     if(reduced % 10 != 0) {
-      numbersArray.unshift(reduced % 10);
+      numbersArray.unshift(reduced % 10); 
       sum += reduced % 10;
     }
 
@@ -23,7 +23,8 @@ function numbers(n){
     console.log("Sum of digits : " + sum);
 
     let inversedNumber = 0;
-    for(let i = numbersArray.length; i--; i >= 0) {
+
+    for(let i = numbersArray.length - 1; i >= 0; i--) {
       inversedNumber += numbersArray[i] * Math.pow(10, i);
     }
 
