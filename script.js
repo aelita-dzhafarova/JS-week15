@@ -18,6 +18,10 @@ function numbers(n){
       sum += reduced % 10;
     }
 
+    console.log("Digits of the number are : ")
+    for(let i = 0; i < numbersArray.length; i++) {
+      console.log(numbersArray[i]);
+    }
     console.log("Number of digits : " + numbersArray.length);
 
     console.log("Sum of digits : " + sum);
